@@ -51,7 +51,7 @@ function PathDerivation({
 	const [customNetworkKey, setCustomNetworkKey] = useState(() => {
 		const parentNetworkKey = getNetworkKey(
 			parentPath,
-			accounts.state.currentIdentity
+			accounts.state.currentIdentity!
 		);
 		return parentNetworkKey === UnknownNetworkKeys.UNKNOWN
 			? defaultNetworkKey

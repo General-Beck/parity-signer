@@ -69,7 +69,7 @@ function SignedTx({
 					style={{ marginBottom: 20 }}
 					description={TX_DETAILS_MSG}
 					signature={data}
-					networkKey={sender.networkKey}
+					networkKey={sender!.networkKey}
 				/>
 			);
 		}
