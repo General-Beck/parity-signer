@@ -87,7 +87,6 @@ jobs:
           npm install -g detox-cli
           gem install xcpretty
       - run: |
-          mvn -X install
           yarn
           cd rust/signer && make ios && cd ../..
       - name: Detox bild
