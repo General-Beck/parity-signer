@@ -86,7 +86,6 @@ jobs:
           npm install -g react-native-cli
           npm install -g detox-cli
           gem install xcpretty
-      - run: |
           nvm install
           yarn
           cd rust/signer && make ios && cd ../..
