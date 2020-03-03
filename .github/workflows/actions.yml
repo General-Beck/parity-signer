@@ -67,6 +67,9 @@ jobs:
       - name:                   Cache sccache MacOS
         if:                     matrix.platform == 'macos-latest'
         uses:                   actions/cache@v1.1.2
+        with:
+          path:                 "/home/runner/.cache/sccache"
+          key:                  ${{ runner.os }}-sccache-check-${{ hashFiles('**/Cargo.lock') }}        
       - name:                   Install sccache for ${{ matrix.platform }}
         shell:                  pwsh
         run:                    pwsh scripts/actions/install-sccache.ps1 ${{ runner.os}}
