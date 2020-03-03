@@ -64,12 +64,13 @@ jobs:
         with:
           path:                 target
           key:                  ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
-      # Install sccache based on https://github.com/denoland/rusty_v8/blob/master/.github/workflows/ci.yml#L69
-      - name:                   Cache sccache
+      - name:                   Cache sccache MacOS
+        if:                     matrix.platform == 'macos-latest'
         uses:                   actions/cache@v1.1.2
-        with:
-          path:                 "/home/runner/.cache/sccache"
-          key:                  ${{ runner.os }}-sccache-check-${{ hashFiles('**/Cargo.lock') }}
+      - name:                   Install sccache for ${{ matrix.platform }}
+        shell:                  pwsh
+        run:                    pwsh scripts/actions/install-sccache.ps1 ${{ runner.os}}
+      - name: Install NodeJS
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
@@ -83,7 +84,8 @@ jobs:
           npm install -g detox-cli
           gem install xcpretty
           yarn
-          cd rust/signer && make ios && cd ../..
+      - name: Build targets
+        run: cd rust/signer && make ios && cd ../..
       - name: Detox biuld
         run: detox build -c ios.sim.release
       - name: Detox test
