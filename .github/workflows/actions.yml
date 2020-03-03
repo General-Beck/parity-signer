@@ -24,12 +24,12 @@ jobs:
           toolchain:            stable
           profile:              minimal
           override:             true
-      - name:                   Install stable toolchain
+      - name:                   Add target i386-apple-ios
         uses:                   actions-rs/toolchain@v1.0.5
         with:
           toolchain:            stable
           target:               i386-apple-ios
-      - name:                   Install stable toolchain
+      - name:                   Add target x86_64-apple-ios
         uses:                   actions-rs/toolchain@v1.0.5
         with:
           toolchain:            stable
@@ -81,7 +81,6 @@ jobs:
           npm install -g react-native-cli
           npm install -g detox-cli
           gem install xcpretty
-          nvm install
           yarn
           cd rust/signer && make ios && cd ../..
       - name: Detox biuld
