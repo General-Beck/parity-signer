@@ -74,7 +74,7 @@ jobs:
         shell:          pwsh
         run:            pwsh scripts/actions/install-sccache.ps1 ${{ runner.os}}
       - name:           Install NodeJS
-      - uses:           actions/setup-node@v1
+        uses:           actions/setup-node@v1
         with:
           node-version: '10.x'
       - name:           Install dependencies
