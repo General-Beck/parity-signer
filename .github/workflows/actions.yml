@@ -89,7 +89,7 @@ jobs:
           nvm install
           yarn
           cd rust/signer && make ios && cd ../..
-      - name: Detox bild
+      - name: Detox biuld
         run: detox build -c ios.sim.release
       - name: Detox test
         run: detox test -c ios.sim.release
