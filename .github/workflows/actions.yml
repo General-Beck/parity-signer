@@ -34,17 +34,17 @@ jobs:
         with:
           toolchain:            stable
           target:               x86_64-apple-ios
-      - name:                   Install stable toolchain
+      - name:                   Add target armv7-apple-ios
         uses:                   actions-rs/toolchain@v1.0.5
         with:
           toolchain:            stable
           target:               armv7-apple-ios
-      - name:                   Install stable toolchain
+      - name:                   Add target armv7s-apple-ios
         uses:                   actions-rs/toolchain@v1.0.5
         with:
           toolchain:            stable
           target:               armv7s-apple-ios
-      - name:                   Install stable toolchain
+      - name:                   Add target aarch64-apple-ios
         uses:                   actions-rs/toolchain@v1.0.5
         with:
           toolchain:            stable
@@ -73,9 +73,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
+      - name: Install dependencies
       - run: |
           brew tap wix/brew
           brew install applesimutils
+          applesimutils --list
       - run: |
           npm install -g yarn
           npm install -g react-native-cli
